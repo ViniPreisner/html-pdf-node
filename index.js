@@ -1,4 +1,3 @@
-const puppeteer = require('puppeteer');
 var Promise = require('bluebird');
 const hb = require('handlebars')
 const inlineCss = require('inline-css')
@@ -15,6 +14,7 @@ async function generatePdf(file, options, callback) {
   }
 
   const browser = await puppeteer.launch({
+    headless: true,
     args: args
   });
   const page = await browser.newPage();
@@ -56,6 +56,7 @@ async function generatePdfs(files, options, callback) {
     delete options.args;
   }
   const browser = await puppeteer.launch({
+    headless: true,
     args: args
   });
   let pdfs = [];
